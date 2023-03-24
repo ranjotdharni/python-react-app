@@ -4,7 +4,7 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /backend
 
-RUN pip install django django-nextjs django-cors-headers
+RUN pip install django django-nextjs django-cors-headers djangorestframework
 
 COPY . .
 
