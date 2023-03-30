@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-u+lw013@!cg^&4!j+qf7wk))xtxfrm0ipnnzq9rwtchdl1bw(d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['meteorize', 'frontend', 'localhost', '0.0.0.0', '127.0.0.1', 'meteorize.azurewebsites.net']
+ALLOWED_HOSTS = ['*']
 
 CORS_ORIGIN_ALLOW_ALL = True
 
