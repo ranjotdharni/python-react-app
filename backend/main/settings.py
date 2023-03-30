@@ -11,10 +11,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-u+lw013@!cg^&4!j+qf7wk))xtxfrm0ipnnzq9rwtchdl1bw(d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', 'frontend']
+ALLOWED_HOSTS = ['meteorize', 'frontend', 'localhost', '0.0.0.0', '127.0.0.1', 'meteorize.azurewebsites.net']
 
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
@@ -25,9 +26,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
     'server',
-    'django_nextjs',
+    'rest_framework',
     'corsheaders',
 ]
 
@@ -114,7 +114,3 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000',
-]

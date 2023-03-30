@@ -6,14 +6,7 @@ import { useEffect, useState } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
-  const [data, setData] = useState("");
-
-  useEffect(() => {
-    fetch('http://localhost:8000/api/')
-      .then((response) => response.json())
-      .then((data) => setData(data));
-  }, []);
+export default function Home({data}) {
   return (
     <>
       <Head>
@@ -127,4 +120,12 @@ export default function Home() {
       </main>
     </>
   )
+}
+
+export async function getServerSideProps()
+{
+    const res = await fetch('http:0.0.0.0:8000/v1/');
+    const data = await res.json();
+
+    return {props: {data}}
 }
