@@ -124,7 +124,7 @@ export default function Home({data}) {
 
 export async function getServerSideProps()
 {
-    const res = await fetch('http:0.0.0.0:8000/v1/');
+    const res = await fetch('https://meteorize-backend.onrender.com/api');
     const data = await res.json();
 
     return {props: {data}}
