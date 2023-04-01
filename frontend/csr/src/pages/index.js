@@ -124,7 +124,12 @@ export default function Home({data}) {
 
 export async function getServerSideProps()
 {
-    const res = await fetch('https://meteorize-backend.onrender.com/api');
+    const res = await fetch('http:127.0.0.1:8000/v1', {
+      method: "GET",
+      headers: {
+        "AUTH-TOKEN": process.env.AUTH_TOKEN,
+      }
+    });
     const data = await res.json();
 
     return {props: {data}}
