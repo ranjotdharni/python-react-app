@@ -4,7 +4,7 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /backend
 
-RUN pip install django django-cors-headers djangorestframework
+RUN pip install django django-cors-headers djangorestframework python-dotenv
 
 COPY . .
 
