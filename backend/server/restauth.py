@@ -2,9 +2,9 @@ import os
 from django.http import HttpResponseBadRequest
 
 #Uncomment during development
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 #
-load_dotenv()
+#load_dotenv()
 
 class CustomMiddleware:
     def __init__(self, get_response):
