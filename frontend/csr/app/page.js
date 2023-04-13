@@ -1,14 +1,19 @@
-export default function page({data})
+import { useState } from "react";
+
+export default async function page()
 {
+    const [data, setData] = useState('Loading');
+    setData(await grabData());
+
     return (
         <div>
             <h1>Welcome to the home page!</h1>
-            <p>data.message</p>
+            <p>{data}</p>
         </div>
     );
 }
 
-export async function getServerSideProps()
+async function grabData()
 {
     const res = await fetch('https://meteorize-backend.onrender.com/v1', {
       method: "GET",
@@ -16,6 +21,5 @@ export async function getServerSideProps()
         "AUTH-TOKEN": process.env.AUTH_TOKEN,
       }
     });
-    const data = await res.json();
-    return {props: {data}}
+    return await res.json();
 }
