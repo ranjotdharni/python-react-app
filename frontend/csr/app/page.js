@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default async function page()
 {
-    const [data, setData] = useState('Loading');
+    const [data, setData] = '';
     setData(await grabData());
 
     return (
