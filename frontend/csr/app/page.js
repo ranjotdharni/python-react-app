@@ -1,4 +1,4 @@
-export default function HomePage({data})
+export default function page({data})
 {
     return (
         <div>
