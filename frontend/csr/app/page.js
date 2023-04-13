@@ -13,7 +13,7 @@ export default async function page()
 
 async function grabData()
 {
-    const res = await fetch('https://meteorize-backend.onrender.com/v1', {
+    const res = await fetch(process.env.ORIGIN + '/api', {
       method: "GET",
       headers: {
         "AUTH-TOKEN": process.env.AUTH_TOKEN,

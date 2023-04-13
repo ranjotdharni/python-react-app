@@ -3,7 +3,7 @@ from pathlib import Path
 
 #Uncomment during development
 #from dotenv import load_dotenv
-
+#
 #load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -120,7 +120,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ORIGIN_ALLOW_ALL = True #DEVELOPMENT
+CORS_ORIGIN_ALLOW_ALL = False #DEVELOPMENT
 
 CORS_ORIGIN_WHITELIST = [
     'https://meteorize.netlify.app',
