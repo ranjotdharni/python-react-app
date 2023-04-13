@@ -1,12 +1,12 @@
 
 export default async function page()
 {
-    data = await grabData();
+    const data = await grabData();
 
     return (
         <div>
             <h1>Welcome to the home page!</h1>
-            <p>{data}</p>
+            <p>{data.message}</p>
         </div>
     );
 }
