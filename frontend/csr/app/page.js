@@ -1,8 +1,7 @@
 
 export default async function page()
 {
-    const [data, setData] = '';
-    setData(await grabData());
+    data = await grabData();
 
     return (
         <div>
