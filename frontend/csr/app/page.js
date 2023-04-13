@@ -1,4 +1,3 @@
-
 export default function HomePage({data})
 {
     return (
