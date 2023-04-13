@@ -1,4 +1,3 @@
-import { useState } from "react";
 
 export default async function page()
 {
