@@ -1,0 +1,102 @@
+.background
+{
+    background: no-repeat center fixed;
+    background-size: cover;
+}
+
+.create_panel
+{
+    width: 25vw;
+    height: 60%;
+    position: absolute;
+    left: 37.5%;
+    top: 20%;
+    border: solid 1px black;
+    border-radius: 1vw;
+    background-color: rgba(22, 21, 21, 0.24);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.create_header
+{
+    width: 55%;
+    height: 5%;
+    position: absolute;
+    top: -0.75%;
+    left: 45.5%;
+    font-size: 2.5vw;
+    margin: 0;
+    color: var(--pink-base);
+    text-shadow: 1px 1px 22px var(--pink-color), -1px -1px 22px var(--pink-color),
+        1px -1px 22px var(--pink-color), -1px 1px 22px var(--pink-color),
+        0px 0px 2px var(--pink-color), 0px 0px 3px var(--pink-color), 0px 0px 4px var(--pink-color);
+}
+
+.create_header_border
+{
+    width: 55%;
+    height: 7.5%;
+    position: absolute;
+    top: 0.75%;
+    left: 43.5%;
+    border: solid 1px black;
+    border-radius: 0.7vw;
+}
+
+.search_div
+{
+    width: 95%;
+    height: 45%;
+    position: absolute;
+    left: 5%;
+    top: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.search_input
+{
+    width: 88%;
+    height: 8.5%;
+    position: relative;
+    top: -4.5%;
+    left: 2%;
+    outline: none;
+    flex: none;
+    color: var(--pink-base);
+    background-color: rgb(54, 51, 51);
+    border: solid 1px var(--pink-base);
+    border-radius: 1vw;
+    padding-left: 1%;
+}
+
+.search_button
+{
+    background-image: url('/svg/magnifying.svg');
+    background-size: contain;
+    background-color: rgba(0, 0, 0, 0);
+    background-repeat: no-repeat;
+    width: 7%;
+    height: 10%;
+    position: absolute;
+    left: 92.5%;
+    top: 2%;
+    border: none;
+}
+
+.search_button:hover
+{
+    cursor: pointer;
+}
+
+.search_list
+{
+    background: linear-gradient(0deg, rgba(34,34,34,0.8) 0%, rgba(34,34,34,0.5) 50%, rgba(34,34,34,0.2) 100%);
+    width: 90%;
+    height: 70%;
+    position: relative;
+    left: 2%;
+}

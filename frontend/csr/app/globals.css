@@ -1,0 +1,10 @@
+:root
+{
+    --pink-base: #f0c5d7;
+    --pink-color: #ec136d;
+}
+
+input
+{
+    font-family: inherit;
+}

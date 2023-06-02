@@ -4,6 +4,15 @@ const nextConfig = {
     appDir: true,
   },
   reactStrictMode: true,
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/weather',
+        permanent: false,
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig
