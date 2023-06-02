@@ -1,2 +1,2 @@
-# python-react-app
-Weather App using React front-end and Python back-end
+# react-next-app
+Weather App using Next framework with React
