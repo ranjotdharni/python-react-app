@@ -1,7 +1,8 @@
 'use client'
 import { Dongle } from '@next/font/google';
-import styles from '../weather.module.css'
+import styles from '../weather.module.css';
 import SearchBox from './SearchBox';
+import { useState } from 'react';
 
 const neon_sign = Dongle({
   subsets: ['latin'],
@@ -10,6 +11,8 @@ const neon_sign = Dongle({
 
 export default function CreatePanel({})
 {
+    const [data, setData] = useState([]);
+
     return (
         <div className={styles.create_panel}>
             <span className={styles.create_header_border}></span>
