@@ -140,28 +140,28 @@
     border: solid 1px black;
     position: relative;
     top: 15%;
-    display: flex;
+    /*display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     column-gap: 20%;
-    flex-shrink: 0;
+    flex-shrink: 0;*/
 }
 
 .search_list_item  label
 {
     color: white;
-    position: relative;
-    left: 2.5%;
+    position: absolute;
+    left: 30.5%;
     font-size: 0.75vw;
 }
 
 .search_list_item label:first-child
 {
-    left: 2% !important;
+    left: 1.5% !important;
 }
 
 .search_list_item label:last-child
 {
-    left: 7% !important;
+    left: 62.5% !important;
 }
