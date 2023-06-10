@@ -6,11 +6,11 @@
 
 .create_panel
 {
-    width: 25vw;
-    height: 60%;
+    width: 45vw;
+    height: 70%;
     position: absolute;
-    left: 37.5%;
-    top: 20%;
+    left: 27.5%;
+    top: 10%;
     border: solid 1px black;
     border-radius: 1vw;
     background-color: rgba(22, 21, 21, 0.24);
@@ -23,9 +23,9 @@
     width: 55%;
     height: 5%;
     position: absolute;
-    top: -0.75%;
-    left: 45.5%;
-    font-size: 2.5vw;
+    top: -1.75%;
+    left: 58%;
+    font-size: 3.5vw;
     margin: 0;
     color: var(--pink-base);
     text-shadow: 1px 1px 22px var(--pink-color), -1px -1px 22px var(--pink-color),
@@ -35,11 +35,11 @@
 
 .create_header_border
 {
-    width: 55%;
+    width: 42.5%;
     height: 7.5%;
     position: absolute;
     top: 0.75%;
-    left: 43.5%;
+    left: 56.75%;
     border: solid 1px black;
     border-radius: 0.7vw;
 }
@@ -83,7 +83,7 @@
     height: 10%;
     position: absolute;
     left: 92.5%;
-    top: 2%;
+    top: -4%;
     border: none;
 }
 
@@ -96,7 +96,7 @@
 {
     background: linear-gradient(0deg, rgba(34,34,34,0.8) 0%, rgba(34,34,34,0.5) 50%, rgba(34,34,34,0.2) 100%);
     width: 90%;
-    height: 70%;
+    height: 90%;
     position: relative;
     left: 2%;
     z-index: 1;
@@ -130,7 +130,7 @@
     color: var(--pink-color);
     position: relative;
     left: 2%;
-    font-size: 0.8vw;
+    font-size: 1vw;
 }
 
 .search_list_item
@@ -139,29 +139,60 @@
     height: 12.5%;
     border: solid 1px black;
     position: relative;
-    top: 15%;
-    /*display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    column-gap: 20%;
-    flex-shrink: 0;*/
+    top: 12.5%;
+    flex-grow: 0;
+    flex-shrink: 0;
 }
 
 .search_list_item  label
 {
     color: white;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     position: absolute;
-    left: 30.5%;
-    font-size: 0.75vw;
+    max-width: 20%;
+    top: 15%;
+    left: 30%;
+    font-size: 0.9vw;
 }
 
 .search_list_item label:first-child
 {
-    left: 1.5% !important;
+    left: 2% !important;
 }
 
 .search_list_item label:last-child
 {
-    left: 62.5% !important;
+    left: 56% !important;
+}
+
+.search_list_item_checked
+{
+    color: var(--pink-base) !important;
+    text-shadow: 1px 1px 10px var(--pink-color), -1px -1px 10px var(--pink-color),
+        1px -1px 10px var(--pink-color), -1px 1px 10px var(--pink-color),
+        0px 0px 1px var(--pink-color), 0px 0px 2px var(--pink-color), 0px 0px 3px var(--pink-color);
+}
+
+.wrapper
+{
+    position: relative;
+    top: 2.5%;
+}
+
+.checkbox
+{
+    position: absolute;
+    left: 90%;
+    accent-color: var(--pink-color);
+}
+
+.error
+{
+    color: rgb(232, 22, 22);
+    position: absolute;
+    top: 80%;
+    left: 8%;
+    transition: opacity 1s ease;
+    font-size: 1vw;
 }

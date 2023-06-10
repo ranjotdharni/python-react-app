@@ -2,7 +2,7 @@
 import { Dongle } from '@next/font/google';
 import styles from '../weather.module.css';
 import SearchBox from './SearchBox';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const neon_sign = Dongle({
   subsets: ['latin'],
@@ -11,7 +11,21 @@ const neon_sign = Dongle({
 
 export default function CreatePanel({})
 {
-    const [data, setData] = useState([]);
+    const [trigger, setTrigger] = useState(1);
+    const [error, setError] = useState('');
+    const [errorFlag, setErrorFlag] = useState(false);
+
+    const childToParent = (newError) => {
+        setError(newError);
+        setErrorFlag(true);
+        setTrigger(trigger * (-1));
+    }
+
+    useEffect(() => {
+        setTimeout(() => {
+            setErrorFlag(false);
+        }, 10000);
+    }, [trigger]);
 
     return (
         <div className={styles.create_panel}>
@@ -20,7 +34,8 @@ export default function CreatePanel({})
                 <h1 className={styles.create_header}>Add New Forecast</h1>
             </main>
 
-            <SearchBox />
+            <SearchBox errorMessage={childToParent}/>
+            <label className={styles.error} style={{opacity: errorFlag ? "1" : "0"}}>{error}</label>
         </div>
     );
 }

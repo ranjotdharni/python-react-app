@@ -10,7 +10,7 @@ const search_box = Dosis({
   });
 
 
-export default function SearchBox()
+export default function SearchBox({errorMessage})
 {
     const [input, setInput] = useState('');
     const [response, setResponse] = useState([]);
@@ -30,7 +30,7 @@ export default function SearchBox()
             }
             else
             {
-                console.log('No Results');
+                errorMessage('No results; check your search.');
             }
         });
     }
@@ -41,7 +41,12 @@ export default function SearchBox()
         const results = response;
         for (var i = 0; i < results.length; i++)
         {
-            const obj = {'id': results[i].id, 'name': results[i].name,'country': results[i].country,'timezone': results[i].timezone};
+            const obj = {
+                'id': results[i].id,
+                'name': results[i].name,
+                'country': results[i].country_code,
+                'timezone': results[i].timezone.substring(results[i].timezone.indexOf("/") + 1).replace(/_/, " ")
+            };
             raw.push(obj);
         }
         setData(raw);
@@ -58,7 +63,6 @@ export default function SearchBox()
                 {data.map(item => {
                     return <SearchItem key={item.id} name={item.name} country={item.country} timezone={item.timezone}/>
                 })}
-                
                 </div>
             </div>
         </main>
