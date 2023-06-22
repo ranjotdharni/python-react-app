@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from '../weather.module.css';
 import { Dosis } from '@next/font/google';
 

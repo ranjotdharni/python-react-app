@@ -133,6 +133,13 @@
     font-size: 1vw;
 }
 
+.search_list_header label:last-child
+{
+    color: rgb(102, 96, 96);
+    font-size: 0.75vw;
+    left: 1%;
+}
+
 .search_list_item
 {
     width: calc(100% - 2px);

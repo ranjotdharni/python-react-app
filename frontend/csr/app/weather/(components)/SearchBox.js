@@ -30,7 +30,7 @@ export default function SearchBox({errorMessage})
             }
             else
             {
-                errorMessage('No results; check your search.');
+                errorMessage('No results, check your search.');
             }
         });
     }
@@ -58,7 +58,7 @@ export default function SearchBox({errorMessage})
                 <input className={styles.search_input} value={input} placeholder='Search City...'
                     onChange={evt => setInput(evt.target.value)}></input><button className={styles.search_button} onClick={search}></button>
                 <div className={styles.search_list}>
-                <div className={styles.search_list_header}><label>Name</label><label>Country</label><label>Timezone</label></div>
+                <div className={styles.search_list_header}><label>Name</label><label>Country</label><label>Timezone</label><label>Select all that apply</label></div>
 
                 {data.map(item => {
                     return <SearchItem key={item.id} name={item.name} country={item.country} timezone={item.timezone}/>
