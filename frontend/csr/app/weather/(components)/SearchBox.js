@@ -7,7 +7,7 @@ import { Dosis } from '@next/font/google';
 const search_box = Dosis({
     subsets: ['latin'],
     weight: ['400']
-  });
+});
 
 
 export default function SearchBox({errorMessage})

@@ -203,3 +203,184 @@
     transition: opacity 1s ease;
     font-size: 1vw;
 }
+
+.nav_div
+{
+    width: 20%;
+    height: 0%;
+    position: absolute;
+    top: 0;
+    left: -20%;
+    background-color: rgba(22, 21, 21, 0.24);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    overflow: visible;
+    transition: all 0.3s ease-out;
+}
+
+.sandwich
+{
+    width: 1.75%;
+    height: 3%;
+    z-index: 2;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    border: none;
+    background-color: rgba(11, 10, 10, 0.24);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    transition: all 0.2s linear;
+}
+
+.sandwich_bar
+{
+    width: 90%;
+    height: 10%;
+    position: relative;
+    border-radius: 1vw;
+    background-color: var(--pink-base);
+}
+
+.sandwich_bar:first-child
+{
+    transition: all 0.2s ease-in;
+}
+
+.sandwich_bar:last-child
+{
+    transition: all 0.2s ease-in;
+}
+
+.sandwich:hover ~ .nav_div
+{
+    height: 6%;
+    left: -10%;
+    background-color: rgba(109, 104, 104, 0.504);
+}
+
+.sandwich:hover
+{
+    cursor: pointer;
+    background-color: rgba(105, 100, 100, 0.24);
+}
+
+.sandwich:hover > .sandwich_bar
+{
+    background-color: var(--pink-color);
+    opacity: 0;
+}
+
+.sandwich:hover > .sandwich_bar:first-child
+{
+    width: 60%;
+    transform: rotate(35deg);
+    top: 10%;
+    left: 5%;
+    opacity: 1;
+}
+
+.sandwich:hover > .sandwich_bar:last-child
+{
+    width: 60%;
+    transform: rotate(-35deg);
+    top: -10%;
+    left: 5%;
+    opacity: 1;
+}
+
+.nav_div_open
+{
+    width: 20%;
+    height: 99.84%;
+    position: absolute;
+    top: 0;
+    left: 0%;
+    border: solid 1px black;
+    background-color: rgba(22, 21, 21, 0.24);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    overflow: visible;
+    transition: all 0.3s ease-in-out;
+}
+
+.sandwich_open
+{
+    width: 1.75%;
+    height: 3%;
+    z-index: 2;
+    position: absolute;
+    top: 2%;
+    left: 17%;
+    border: none;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    transition: all 0.3s ease-in-out;
+}
+
+.sandwich_open:hover
+{
+    cursor: pointer;
+    background-color: rgba(11, 10, 10, 0.24);
+}
+
+.sandwich_bar_open
+{
+    width: 90%;
+    height: 10%;
+    position: relative;
+    border-radius: 1vw;
+    transition: all 0.5s ease-in;
+    background-color: var(--pink-color);
+    opacity: 0;
+}
+
+.sandwich_bar_open:first-child
+{
+    transform: rotate(45deg);
+    opacity: 1;
+    top: 25%;
+}
+
+.sandwich_bar_open:last-child
+{
+    transform: rotate(-45deg);
+    opacity: 1;
+    top: -25%;
+}
+
+.hide
+{
+    display: none;
+}
+
+.new_nav_item
+{
+    width: 100%;
+    height: 2%;
+    color: var(--pink-base);
+    background-color: rgba(11, 10, 10, 0.24);
+    text-decoration: none;
+    position: relative;
+    top: 6%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.1s ease-in;
+}
+
+.new_nav_item:hover
+{
+    color: var(--pink-color);
+    background-color: rgba(109, 104, 104, 0.24);
+    cursor: pointer;
+}
