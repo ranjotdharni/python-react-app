@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect, setState } from 'react';
 import SearchItem from './SearchItem';
-import styles from '../weather.module.css';
+import styles from './component.module.css';
 import { Dosis } from '@next/font/google';
 
 const search_box = Dosis({

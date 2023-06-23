@@ -1,6 +1,6 @@
 'use client'
 import { Dongle } from '@next/font/google';
-import styles from '../weather.module.css';
+import styles from './component.module.css';
 import SearchBox from './SearchBox';
 import { useState, useEffect } from 'react';
 
