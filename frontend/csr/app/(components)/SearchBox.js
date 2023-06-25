@@ -45,7 +45,9 @@ export default function SearchBox({errorMessage})
                 'id': results[i].id,
                 'name': results[i].name,
                 'country': results[i].country_code,
-                'timezone': results[i].timezone.substring(results[i].timezone.indexOf("/") + 1).replace(/_/, " ")
+                'timezone': results[i].timezone.substring(results[i].timezone.indexOf("/") + 1).replace(/_/, " "),
+                'lat': results[i].latitude,
+                'lon': results[i].longitude
             };
             raw.push(obj);
         }

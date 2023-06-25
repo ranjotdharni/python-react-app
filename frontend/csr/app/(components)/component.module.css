@@ -216,6 +216,7 @@
     -webkit-backdrop-filter: blur(5px);
     overflow: visible;
     transition: all 0.3s ease-out;
+    z-index: 9;
 }
 
 .sandwich
@@ -235,6 +236,7 @@
     align-items: center;
     justify-content: space-evenly;
     transition: all 0.2s linear;
+    z-index: 10;
 }
 
 .sandwich_bar
@@ -306,6 +308,7 @@
     -webkit-backdrop-filter: blur(5px);
     overflow: visible;
     transition: all 0.3s ease-in-out;
+    z-index: 9;
 }
 
 .sandwich_open
@@ -324,6 +327,7 @@
     align-items: center;
     justify-content: space-evenly;
     transition: all 0.3s ease-in-out;
+    z-index: 10;
 }
 
 .sandwich_open:hover

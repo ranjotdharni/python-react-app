@@ -1,0 +1,14 @@
+.wrapper
+{
+    display: inline-block;
+    width: 90vw;
+    height: 45vh;
+    position: relative;
+    left: 5vw;
+    top: calc(2.5vh + 2vw);
+    border: solid 1px black;
+    border-radius: 1vw;
+    background-color: rgba(22, 21, 21, 0.24);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
