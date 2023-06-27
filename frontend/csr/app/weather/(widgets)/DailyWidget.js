@@ -10,8 +10,8 @@ const font = Dosis({
 
 export default function DailyWidget({props}) {
   return (
-    <div className={styles.wrapper}>
-        Weather for ID {props}
+    <div className={styles.wrapper + ' ' + font.className}>
+      Daily forecast for ID {props}
     </div>
   );
 }

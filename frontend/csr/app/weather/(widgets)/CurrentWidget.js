@@ -10,9 +10,8 @@ const font = Dosis({
 
 export default function CurrentWidget({props}) {
   return (
-    <div className={styles.wrapper}>
-      <label className={styles.header_label + ' ' + font.className}>Berlin</label>
-      Weather for ID {props}
+    <div className={styles.wrapper + ' ' + font.className}>
+      Current Weather @ latitude: {props.lat} longitude: {props.lon}
     </div>
   );
 }

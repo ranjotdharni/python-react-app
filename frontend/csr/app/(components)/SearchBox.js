@@ -10,7 +10,7 @@ const search_box = Dosis({
 });
 
 
-export default function SearchBox({errorMessage})
+export default function SearchBox({errorMessage, siblingToSibling})
 {
     const [input, setInput] = useState('');
     const [response, setResponse] = useState([]);
@@ -63,7 +63,7 @@ export default function SearchBox({errorMessage})
                 <div className={styles.search_list_header}><label>Name</label><label>Country</label><label>Timezone</label><label>Select all that apply</label></div>
 
                 {data.map(item => {
-                    return <SearchItem key={item.id} name={item.name} country={item.country} timezone={item.timezone}/>
+                    return <SearchItem key={item.id} id={item.id} name={item.name} country={item.country} timezone={item.timezone} passUp={siblingToSibling}/>
                 })}
                 </div>
             </div>

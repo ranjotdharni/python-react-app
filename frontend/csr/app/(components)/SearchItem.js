@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './component.module.css';
 import { Dosis } from '@next/font/google';
 
@@ -8,11 +8,12 @@ const search_box = Dosis({
     weight: ['400']
   });
 
-export default function SearchItem({name, country, timezone}) {
+export default function SearchItem({id, name, country, timezone, passUp}) {
   const [checked, setChecked] = useState(false);
 
   const invert = () => {
     setChecked(!checked);
+    passUp(id, name, country);
   }
 
   return (
