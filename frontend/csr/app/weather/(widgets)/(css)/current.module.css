@@ -3,30 +3,12 @@
     display: inline-block;
     width: 20vw;
     height: 44vh;
-    position: relative;
-    left: 5vw;
-    top: 7vh;
+    position: absolute;
+    left: 5.5vw;
+    top: 8vh;
     border: solid 1px black;
     border-radius: 1vw;
     background-color: rgba(22, 21, 21, 0.24);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-}
-
-.header_label
-{
-    width: 30%;
-    height: 10%;
-    position: absolute;
-    top: 0;
-    left: 70%;
-    background-color: var(--pink-color);
-    border-top-right-radius: 1vw;
-    border-bottom-left-radius: 1vw;
-    color: var(--pink-base);
-    font-size: 1.5vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }

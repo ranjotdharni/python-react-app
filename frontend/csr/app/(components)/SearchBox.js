@@ -16,7 +16,7 @@ export default function SearchBox({errorMessage, siblingToSibling})
     const [response, setResponse] = useState([]);
     const [data, setData] = useState([]);
 
-    const search = async (e) => 
+    const search = async (onChange) => 
     {
         if (input.trim() == '')
             return;
@@ -28,7 +28,7 @@ export default function SearchBox({errorMessage, siblingToSibling})
             {
                 setResponse(final.results);
             }
-            else
+            else if (!onChange)
             {
                 errorMessage('No results, check your search.');
             }
@@ -58,12 +58,12 @@ export default function SearchBox({errorMessage, siblingToSibling})
         <main className={search_box.className}>
             <div className={styles.search_div}>
                 <input className={styles.search_input} value={input} placeholder='Search City...'
-                    onChange={evt => setInput(evt.target.value)}></input><button className={styles.search_button} onClick={search}></button>
+                    onChange={evt => {setInput(evt.target.value); search(true)}}></input><button className={styles.search_button} onClick={() => {search(false)}}></button>
                 <div className={styles.search_list}>
                 <div className={styles.search_list_header}><label>Name</label><label>Country</label><label>Timezone</label><label>Select all that apply</label></div>
 
                 {data.map(item => {
-                    return <SearchItem key={item.id} id={item.id} name={item.name} country={item.country} timezone={item.timezone} passUp={siblingToSibling}/>
+                    return <SearchItem key={item.id} id={item.id} name={item.name} country={item.country} timezone={item.timezone} lat={item.lat} lon={item.lon} passUp={siblingToSibling}/>
                 })}
                 </div>
             </div>

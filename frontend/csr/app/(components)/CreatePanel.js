@@ -24,14 +24,14 @@ export default function CreatePanel({})
         setTrigger(trigger * (-1));
     }
 
-    const addBufferItem = (key, name, country) => {
+    const addBufferItem = (key, name, country, lat, lon) => {
         if (buffer.size > 0 && buffer.has(key))
         {
             buffer.delete(key);
         }
         else
         {
-            buffer.set(key, {id: key, name: name, country: country});
+            buffer.set(key, {id: key, name: name, country: country, lat: lat, lon: lon});
         }
         
         if (buffer.size > 0)
@@ -45,6 +45,8 @@ export default function CreatePanel({})
     }
 
     const makeForecast = () => {
+        if (!readyState)    return;
+
         const first = localStorage.getItem('forecastHash');
         const temp = [];
         let flag = null;

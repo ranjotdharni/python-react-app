@@ -8,12 +8,12 @@ const search_box = Dosis({
     weight: ['400']
   });
 
-export default function SearchItem({id, name, country, timezone, passUp}) {
+export default function SearchItem({id, name, country, timezone, lat, lon, passUp}) {
   const [checked, setChecked] = useState(false);
 
   const invert = () => {
     setChecked(!checked);
-    passUp(id, name, country);
+    passUp(id, name, country, lat, lon);
   }
 
   return (

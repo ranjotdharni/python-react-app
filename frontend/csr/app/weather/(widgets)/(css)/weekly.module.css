@@ -3,9 +3,9 @@
     display: inline-block;
     width: 90vw;
     height: 44vh;
-    position: relative;
-    left: 5vw;
-    top: calc(3.5vh + 2vw);
+    position: absolute;
+    left: 5.5vw;
+    top: 52.5vh;
     border: solid 1px black;
     border-radius: 1vw;
     background-color: rgba(22, 21, 21, 0.24);

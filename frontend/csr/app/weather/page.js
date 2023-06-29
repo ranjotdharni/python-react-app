@@ -1,4 +1,5 @@
 import styles from './page.module.css'
+import DynamicWall from '../(components)/DynamicWall';
 import CurrentWidget from './(widgets)/CurrentWidget';
 import DailyWidget from './(widgets)/DailyWidget';
 import WeeklyWidget from './(widgets)/WeeklyWidget';
@@ -23,6 +24,8 @@ export default async function page({searchParams})
 
   return (
     <>
+      <DynamicWall />
+
       <div className={styles.page_header_wrapper}><label className={styles.page_header + ' ' + font.className}>{label}</label></div>
       <CurrentWidget props={parseCurrentProps(initialProps)} />
       <DailyWidget props={label} />

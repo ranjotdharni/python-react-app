@@ -12,7 +12,24 @@ export default function NavBar()
 {
     var [loc, setLoc] = useState('');
     const [isOpen, setIsOpen] = useState(false);
-    const [items, setItems] = useState([])
+    const [items, setItems] = useState([]);
+
+    const obliterate = (id) => {
+        const old = localStorage.getItem('forecastHash');
+        const current = [];
+        let worker = null;
+
+        worker = JSON.parse(old);
+        worker.forEach(item => {
+            if (item.id != id)
+            {
+                current.push(item);
+            }
+        });
+
+        localStorage.setItem('forecastHash', JSON.stringify(current));
+        setItems(current);
+    }
 
     const invert = () => {
         setIsOpen(!isOpen);
@@ -49,7 +66,12 @@ export default function NavBar()
                 <a href={loc} className={(isOpen ? styles.new_nav_item : styles.hide) + " " + search_box.className}>+Add New Forecast...</a>
 
                 {items.map(item => {
-                    return <a key={item.id} href={loc + '/weather?id=' + item.id} className={(isOpen ? styles.new_nav_item : styles.hide) + " " + styles.nav_list_item + " " + search_box.className}>{item.name + ', ' + item.country}</a>
+                    return (
+                        <div key={item.id} className={styles.item_wrapper}>
+                            <a href={loc + '/weather?id=' + item.id} className={(isOpen ? styles.new_nav_item : styles.hide) + " " + styles.nav_list_item + " " + search_box.className}>{item.name + ', ' + item.country}</a>
+                            <button className={styles.delete_button} onClick={() => obliterate(item.id)}></button>
+                        </div>
+                    )
                 })}
             </div>
         </>
