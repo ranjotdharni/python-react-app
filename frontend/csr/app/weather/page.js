@@ -43,7 +43,7 @@ const instateInitialProps = async (id) => {
   const worker = await fetch('https://geocoding-api.open-meteo.com/v1/get?id=' + id);
   const data = await worker.json();
   
-  if (data.error)
+  if (data.error == true)
   {
     newError(data.reason);
   }
