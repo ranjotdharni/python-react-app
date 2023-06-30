@@ -15,10 +15,6 @@ export default async function page({searchParams})
 {
   const id = searchParams.id;
   var initialProps;
-  if (!id)
-  {
-    redirect('/');
-  }
 
   initialProps = await instateInitialProps(id);
   const label = initialProps.name + ', ' + initialProps.country;
@@ -33,10 +29,6 @@ export default async function page({searchParams})
       <WeeklyWidget props={label} />
     </> 
   );
-}
-
-const newError = (m) => {
-  redirect('/error');
 }
 
 const instateInitialProps = async (id) => {
