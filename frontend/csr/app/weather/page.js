@@ -17,7 +17,7 @@ export default async function page({searchParams})
   var initialProps;
   if (!id)
   {
-    newError(`Hmm, that page doesn't seem to exist...`)
+    redirect('/');
   }
 
   initialProps = await instateInitialProps(id);
@@ -42,11 +42,6 @@ const newError = (m) => {
 const instateInitialProps = async (id) => {
   const worker = await fetch('https://geocoding-api.open-meteo.com/v1/get?id=' + id);
   const data = await worker.json();
-  
-  if (data.error == true)
-  {
-    newError(data.reason);
-  }
   
   return data;
 }
