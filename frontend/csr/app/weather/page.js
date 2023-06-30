@@ -1,4 +1,5 @@
 import styles from './page.module.css'
+import { redirect } from 'next/navigation';
 import DynamicWall from '../(components)/DynamicWall';
 import CurrentWidget from './(widgets)/CurrentWidget';
 import DailyWidget from './(widgets)/DailyWidget';
@@ -35,7 +36,7 @@ export default async function page({searchParams})
 }
 
 const newError = (m) => {
-  throw new Error(m);
+  redirect('/error');
 }
 
 const instateInitialProps = async (id) => {

@@ -1,6 +1,5 @@
 'use client'
 import styles from './(css)/current.module.css';
-import { useState } from 'react';
 import { Dosis } from '@next/font/google';
 
 const font = Dosis({
