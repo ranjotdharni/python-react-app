@@ -16,7 +16,7 @@ export default async function page({searchParams})
   var id = searchParams.id;
   var initialProps;
 
-  if (!id)
+  if (id == '' || !id)
   {
     redirect('/');
   }
