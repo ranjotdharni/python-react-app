@@ -3,7 +3,6 @@ import { Dongle } from '@next/font/google';
 import styles from './component.module.css';
 import SearchBox from './SearchBox';
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 
 const neon_sign = Dongle({
   subsets: ['latin'],

@@ -13,7 +13,7 @@ const font = Dosis({
 
 export default async function page({searchParams})
 {
-  const id = searchParams.id;
+  var id = searchParams.id;
   var initialProps;
 
   if (!id)
