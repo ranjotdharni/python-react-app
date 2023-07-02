@@ -16,7 +16,7 @@ export default function WallCover({isReady}) {
             }, 1000);
         }, 2000);
     }
-  }, isReady);
+  }, [isReady]);
 
   return (
     display ? <video src={'/mp4/loading.mp4'} className={styles.cover + ' ' + (timeUp ? styles.fade : '')} autoPlay muted></video> : <div></div>

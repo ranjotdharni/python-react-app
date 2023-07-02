@@ -25,6 +25,13 @@ export default function CreatePanel({})
     }
 
     const addBufferItem = (key, name, country, lat, lon) => {
+        if (key == null)
+        {
+            setReadyState(false);
+            buffer.clear();
+            return;
+        }
+
         if (buffer.size > 0 && buffer.has(key))
         {
             buffer.delete(key);

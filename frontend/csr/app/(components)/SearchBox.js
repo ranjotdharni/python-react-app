@@ -21,6 +21,8 @@ export default function SearchBox({errorMessage, siblingToSibling})
         if (input.trim() == '')
             return;
 
+        siblingToSibling(null, null, null, null, null);
+    
         await fetch('https://geocoding-api.open-meteo.com/v1/search?name=' + input).then(async mid => {
             return await mid.json();
         }).then(async final => {
@@ -45,7 +47,7 @@ export default function SearchBox({errorMessage, siblingToSibling})
                 'id': results[i].id,
                 'name': results[i].name,
                 'country': results[i].country_code,
-                'timezone': results[i].timezone.substring(results[i].timezone.indexOf("/") + 1).replace(/_/, " "),
+                'region': results[i].admin1, //.timezone.substring(results[i].timezone.indexOf("/") + 1).replace(/_/, " "),
                 'lat': results[i].latitude,
                 'lon': results[i].longitude
             };
@@ -60,10 +62,10 @@ export default function SearchBox({errorMessage, siblingToSibling})
                 <input className={styles.search_input} value={input} placeholder='Search City...'
                     onChange={evt => {setInput(evt.target.value); search(true)}}></input><button className={styles.search_button} onClick={() => {search(false)}}></button>
                 <div className={styles.search_list}>
-                <div className={styles.search_list_header}><label>Name</label><label>Country</label><label>Timezone</label><label>Select all that apply</label></div>
+                <div className={styles.search_list_header}><label>Select all that apply</label></div>
 
                 {data.map(item => {
-                    return <SearchItem key={item.id} id={item.id} name={item.name} country={item.country} timezone={item.timezone} lat={item.lat} lon={item.lon} passUp={siblingToSibling}/>
+                    return <SearchItem key={item.id} id={item.id} name={item.name} country={item.country} region={item.region} lat={item.lat} lon={item.lon} passUp={siblingToSibling}/>
                 })}
                 </div>
             </div>
