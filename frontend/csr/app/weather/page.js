@@ -6,6 +6,8 @@ import DailyWidget from './(widgets)/DailyWidget';
 import WeeklyWidget from './(widgets)/WeeklyWidget';
 import { Dosis } from '@next/font/google';
 
+export const dynamic='force-dynamic';
+
 const font = Dosis({
     subsets: ['latin'],
     weight: ['400']
@@ -16,7 +18,7 @@ export default async function page({searchParams})
   var id = searchParams.id;
   var initialProps;
 
-  if (id == '' || !id)
+  if (!id)
   {
     redirect('/');
   }

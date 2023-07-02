@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import styles from './component.module.css';
 import { Dosis } from '@next/font/google';
 
@@ -68,7 +69,7 @@ export default function NavBar()
                 {items.map(item => {
                     return (
                         <div key={item.id} className={styles.item_wrapper}>
-                            <a href={loc + '/weather?id=' + item.id} className={(isOpen ? styles.new_nav_item : styles.hide) + " " + styles.nav_list_item + " " + search_box.className}>{item.name + ', ' + item.country}</a>
+                            <Link href={'/weather?id=' + item.id} className={(isOpen ? styles.new_nav_item : styles.hide) + " " + styles.nav_list_item + " " + search_box.className}>{item.name + ', ' + item.country}</Link>
                             <button className={styles.delete_button} onClick={() => obliterate(item.id)}></button>
                         </div>
                     )
