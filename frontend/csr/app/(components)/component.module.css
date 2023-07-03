@@ -194,27 +194,22 @@
     top: 50%;
 }
 
-.search_list_item:hover p 
+.search_list_item:hover .location_label::after 
 {
-    display: block;
-}
-
-.location_label
-{
-    top: 5%;
-    left: 6%;
-}
-
-.country_label
-{
-    top: 5%;
-    left: 70%;
-}
-
-.search_list_item p
-{
-    display: none;
+    content: 'City';
+    color: black;
     position: absolute;
+    top: -125%;
+    left: 2.5%;
+}
+
+.search_list_item:hover .country_label::after 
+{
+    content: 'Country';
+    color: black;
+    position: absolute;
+    top: -125%;
+    left: 0%;
 }
 
 .search_list_item  label

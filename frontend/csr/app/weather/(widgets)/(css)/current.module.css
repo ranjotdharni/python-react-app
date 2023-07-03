@@ -6,9 +6,92 @@
     position: absolute;
     left: 5.5vw;
     top: 8vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     border: solid 1px black;
     border-radius: 1vw;
     background-color: rgba(22, 21, 21, 0.24);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
+}
+
+.time
+{
+    font-size: 1.5vw;
+    position: absolute;
+    top: 1%;
+    left: 72%;
+    color: var(--pink-base);
+    text-shadow: 1px 1px 22px var(--pink-color), -1px -1px 22px var(--pink-color),
+        1px -1px 22px var(--pink-color), -1px 1px 22px var(--pink-color),
+        0px 0px 2px var(--pink-color), 0px 0px 3px var(--pink-color), 0px 0px 4px var(--pink-color);
+}
+
+.animation_wrapper
+{
+    width: 125%;
+    height: 60%;
+    position: absolute;
+    top: 10%;
+    left: 19%;
+}
+
+.animation
+{
+    width: 100%;
+    height: 100%;
+}
+
+.description
+{
+    font-size: 1.25vw;
+    position: relative;
+    top: 65%;
+    color: var(--pink-base);
+    text-shadow: 1px 1px 22px var(--pink-color), -1px -1px 22px var(--pink-color),
+        1px -1px 22px var(--pink-color), -1px 1px 22px var(--pink-color),
+        0px 0px 2px var(--pink-color), 0px 0px 3px var(--pink-color), 0px 0px 4px var(--pink-color);
+}
+
+.description_after
+{
+    background-color: rgb(22, 21, 21);
+    position: absolute;
+    top: 79%;
+    left: 10%;
+    width: 80%;
+    height: 0.5%;
+    border-radius: 1vw;
+    visibility: visible;
+}
+
+.temperature
+{
+    background-color: rgb(13, 13, 13);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    height: 20%;
+    position: absolute;
+    top: 2.5%;
+    left: 2.5%;
+    border-radius: 0.5vw;
+    font-size: 1.5vw;
+    color: var(--pink-base);
+    text-shadow: 1px 1px 22px var(--pink-color), -1px -1px 22px var(--pink-color),
+        1px -1px 22px var(--pink-color), -1px 1px 22px var(--pink-color),
+        0px 0px 2px var(--pink-color), 0px 0px 3px var(--pink-color), 0px 0px 4px var(--pink-color);
+}
+
+.temperature_unit
+{
+    font-size: 0.7vw;
+    color: var(--pink-base);
+    text-shadow: none;
+    position: absolute;
+    top: 5%;
+    left: 75%;
 }

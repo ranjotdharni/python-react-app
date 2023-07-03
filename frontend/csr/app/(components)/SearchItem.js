@@ -13,16 +13,14 @@ export default function SearchItem({id, name, country, region, lat, lon, passUp}
 
   const invert = () => {
     setChecked(!checked);
-    passUp(id, name, country, lat, lon);
+    passUp(id, (name + ', ' + region), country, lat, lon);
   }
 
   return (
     <>
       <div className={styles.search_list_item + " " + search_box + " " + (checked ? styles.search_list_item_ready : "")} onClick={invert}>
-        <p className={styles.location_label}>City</p>
-        <p className={styles.country_label}>Country</p>
-        <label className={checked ? styles.search_list_item_checked : ""}>{name + ', ' + (region || 'N/A')}</label>
-        <label className={(checked ? styles.search_list_item_checked : "") + " " + styles.country_code}>{country}</label>
+        <label className={(checked ? styles.search_list_item_checked : "") + " " + styles.location_label}>{name + ', ' + (region || 'N/A')}</label>
+        <label className={(checked ? styles.search_list_item_checked : "") + " " + styles.country_code + " " + styles.country_label}>{country}</label>
         <div className={search_box.className + " " + styles.checkbox + " " + (checked ? styles.checked : "")}>
           <div className={styles.bar1}></div>
           <div className={styles.bar2}></div>

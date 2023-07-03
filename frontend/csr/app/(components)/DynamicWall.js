@@ -21,12 +21,13 @@ const defaultBackground = async () => {
 
     const res = await temp.json();
 
-    res.photos.forEach(itr => {
-        if ((itr.width >= 1920) && (itr.height >= 1080))
+    for (var i = 0; i < res.photos.length; i++)
+    {
+        if ((res.photos[i].width >= 1920) && (res.photos[i].height >= 1080))
         {
-            return itr.src.original;
+            return res.photos[i].src.original;
         }
-    })
+    }
 
     return res.photos[Math.floor(Math.random() * res.photos.length)].src.original;
 }
