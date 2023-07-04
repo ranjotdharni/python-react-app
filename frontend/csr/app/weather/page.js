@@ -60,7 +60,7 @@ export default async function page({searchParams})
 
   initialProps = await instateInitialProps(id);
   label = initialProps.name + ', ' + initialProps.admin1;
-  finalProps = await instateFinalProps(initialProps.latitude, initialProps.longitude, initialProps.timezone);
+  finalProps = await instateFinalProps(initialProps.latitude, initialProps.longitude);
 
   return (
     <>
@@ -86,8 +86,8 @@ const instateInitialProps = async (id) => {
   return data;
 }
 
-const instateFinalProps = async (lat, lon, tz) => {
-  const worker = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + lon + '&timezone=' + tz + '&current_weather=true&temperature_unit=fahrenheit&hourly=temperature_2m,weathercode');
+const instateFinalProps = async (lat, lon) => {
+  const worker = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + lon + '&timezone=auto&current_weather=true&windspeed_unit=mph&temperature_unit=fahrenheit&hourly=temperature_2m,weathercode,visibility&daily=sunrise,sunset');
   const data = await worker.json();
 
   return data;
@@ -102,11 +102,16 @@ const parseCurrentProps = (obj) => {
     'temp': obj.current_weather.temperature,
     'unit': obj.hourly_units.temperature_2m,
     'time': getTime(obj.current_weather.time),
+    'wind_dir': Math.trunc(obj.current_weather.winddirection),
+    'wind_speed': obj.current_weather.windspeed,
+    'visibility': Math.round(obj.hourly.visibility[0] / 1609.344),
+    'sunrise': new Date(obj.daily.sunrise[0]).toLocaleString([], { hour: 'numeric', minute: 'numeric', hour12: true }),
+    'sunset': new Date(obj.daily.sunset[0]).toLocaleString([], { hour: 'numeric', minute: 'numeric', hour12: true })
   };
 }
 
 const dayOrNight = (string, isDay) => {
-  if (isDay == 0)
+  if (isDay === 0)
   {
     return string.replace('day', 'night');
   }
@@ -115,6 +120,7 @@ const dayOrNight = (string, isDay) => {
 }
 
 const getTime = (context) => {
-  var date = new Date(); date.setHours(date.getHours() + ((new Date(context)).getUTCHours() - 10));
+  var date = new Date();
+  date.setUTCHours(date.getUTCHours() + Math.abs((new Date().getUTCHours()) - (new Date(context).getUTCHours())));
   return date.toLocaleString([], { hour: 'numeric', minute: 'numeric', hour12: true });
 }

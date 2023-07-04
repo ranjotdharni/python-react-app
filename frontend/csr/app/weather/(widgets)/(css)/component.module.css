@@ -1,0 +1,73 @@
+.compass
+{
+    width: 40%;
+    height: 90%;
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    border-radius: 10vw;
+    border: solid 1px rgb(184, 165, 165);
+    background-color: rgb(13, 13, 13);
+}
+
+.needle
+{
+    background-color: var(--pink-base);
+    width: 1px;
+    height: 70%;
+    position: absolute;
+    top: 15%;
+    left: 49%;
+    border-radius: 1vw;
+    box-shadow: 1px 1px 22px var(--pink-color), -1px -1px 22px var(--pink-color),
+        1px -1px 22px var(--pink-color), -1px 1px 22px var(--pink-color),
+        0px 0px 2px var(--pink-color), 0px 0px 3px var(--pink-color), 0px 0px 4px var(--pink-color);
+    transition: transform 1s ease;
+}
+
+.handle1
+{
+    width: 75%;
+    height: 35%;
+    border-radius: 1vw;
+    background-color: var(--pink-base);
+    box-shadow: 1px 1px 22px var(--pink-color), -1px -1px 22px var(--pink-color),
+        1px -1px 22px var(--pink-color), -1px 1px 22px var(--pink-color),
+        0px 0px 2px var(--pink-color), 0px 0px 3px var(--pink-color), 0px 0px 4px var(--pink-color);
+    position: absolute;
+    left: -110%;
+    transform: rotate(15deg);
+}
+
+.handle2
+{
+    width: 75%;
+    height: 35%;
+    border-radius: 1vw;
+    background-color: var(--pink-base);
+    box-shadow: 1px 1px 22px var(--pink-color), -1px -1px 22px var(--pink-color),
+        1px -1px 22px var(--pink-color), -1px 1px 22px var(--pink-color),
+        0px 0px 2px var(--pink-color), 0px 0px 3px var(--pink-color), 0px 0px 4px var(--pink-color);
+    position: absolute;
+    left: 110%;
+    transform: rotate(-15deg);
+}
+
+.direction
+{
+    color: rgb(167, 160, 151);
+    font-size: 0.75vw;
+    position: absolute;
+    top: 55%;
+    left: 120%;
+}
+
+.speed
+{
+    width: 4vw;
+    color: rgb(167, 160, 151);
+    font-size: 0.75vw;
+    position: absolute;
+    top: 0%;
+    left: 120%;
+}

@@ -117,7 +117,7 @@
 
 .search_list
 {
-    background: #76234d;/*linear-gradient(0deg, rgba(34,34,34,0.8) 0%, rgba(34,34,34,0.5) 50%, rgba(34,34,34,0.2) 100%);*/
+    background: rgb(34, 34, 34);/*#76234d;/*linear-gradient(0deg, rgba(34,34,34,0.8) 0%, rgba(34,34,34,0.5) 50%, rgba(34,34,34,0.2) 100%);*/
     width: 90%;
     height: 90%;
     position: relative;
@@ -128,6 +128,14 @@
     justify-content: flex-start;
     overflow-y: scroll;
     overflow-x: visible;
+    border: solid 2px var(--pink-base);
+    border-radius: 1vw; 
+    box-shadow: inset 1px 1px 22px var(--pink-color), inset -1px -1px 22px var(--pink-color),
+        inset 1px -1px 22px var(--pink-color), inset -1px 1px 22px var(--pink-color),
+        inset 0px 0px 2px var(--pink-color), inset 0px 0px 3px var(--pink-color), inset 0px 0px 4px var(--pink-color),
+        1px 1px 22px var(--pink-color), -1px -1px 22px var(--pink-color),
+        1px -1px 22px var(--pink-color), -1px 1px 22px var(--pink-color),
+        0px 0px 2px var(--pink-color), 0px 0px 3px var(--pink-color), 0px 0px 4px var(--pink-color);
 }
 
 .search_list::-webkit-scrollbar
@@ -139,7 +147,6 @@
 {
     width: 31.5%;
     height: 5%;
-    background: #52233b;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -147,6 +154,8 @@
     column-gap: 20%;
     z-index: 2;
     position: fixed;
+    border-top-left-radius: 1vw;
+    border-top-right-radius: 1vw;
 }
 
 .search_list_header  label
@@ -236,10 +245,14 @@
 
 .search_list_item_ready
 {
-    background-color: var(--pink-color);
+    background-color: rgb(34, 34, 34);
     width: 85%;
     height: 15%;
     left: 7.5%;
+    border: solid 1px var(--pink-base);
+    box-shadow: inset 1px 1px 22px var(--pink-color), inset -1px -1px 22px var(--pink-color),
+        inset 1px -1px 22px var(--pink-color), inset -1px 1px 22px var(--pink-color),
+        inset 0px 0px 2px var(--pink-color), inset 0px 0px 3px var(--pink-color), inset 0px 0px 4px var(--pink-color);
 }
 
 .search_list_item_checked
@@ -568,7 +581,7 @@
     height: 5%;
     padding-inline-start: 2%;
     padding-inline-end: 2%;
-    background-color: rgb(82, 35, 59);
+    background-color: rgb(34, 34, 34);/*rgb(82, 35, 59);*/
     position: absolute;
     display: flex;
     flex-direction: column;

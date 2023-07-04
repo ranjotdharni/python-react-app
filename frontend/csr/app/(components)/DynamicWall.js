@@ -12,22 +12,26 @@ export default async function DynamicWall() {
 }
 
 const defaultBackground = async () => {
-    const temp = await fetch('https://api.pexels.com/v1/search?query=' + process.env.DEFAULT_WALLPAPER + '&per_page=80&color=#ec136d', {
+    const temp = await fetch('https://api.pexels.com/v1/search?query=' + process.env.DEFAULT_WALLPAPER + '&per_page=80&color=#2b2461', {
         method: "GET",
         headers: {
             Authorization: process.env.PEXEL_KEY,
         }
-    });
+    }); //#2b2461
 
     const res = await temp.json();
 
-    for (var i = 0; i < res.photos.length; i++)
+    var src = '';
+    var width = 0;
+    var height = 0;
+
+    while ((width < 1920) && (height < 1080))
     {
-        if ((res.photos[i].width >= 1920) && (res.photos[i].height >= 1080))
-        {
-            return res.photos[i].src.original;
-        }
+        const index = Math.trunc(Math.random() * res.photos.length);
+        src = res.photos[index].src.original;
+        width = res.photos[index].width;
+        height = res.photos[index].height;
     }
 
-    return res.photos[Math.floor(Math.random() * res.photos.length)].src.original;
+    return src;
 }
