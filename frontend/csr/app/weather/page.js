@@ -60,7 +60,7 @@ export default async function page({searchParams})
 
   initialProps = await instateInitialProps(id);
   label = initialProps.name + ', ' + initialProps.admin1;
-  finalProps = await instateFinalProps(initialProps.latitude, initialProps.longitude);
+  finalProps = await instateFinalProps(initialProps.latitude, initialProps.longitude, initialProps.timezone);
 
   return (
     <>
@@ -68,7 +68,7 @@ export default async function page({searchParams})
 
       <div className={styles.page_header_wrapper}><label className={styles.page_header + ' ' + font.className}>{label}</label></div>
       <CurrentWidget props={parseCurrentProps(finalProps)} />
-      <DailyWidget props={label} />
+      <DailyWidget props={parseDailyProps(finalProps)} />
       <WeeklyWidget props={label} />
     </> 
   );
@@ -86,8 +86,8 @@ const instateInitialProps = async (id) => {
   return data;
 }
 
-const instateFinalProps = async (lat, lon) => {
-  const worker = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + lon + '&timezone=auto&current_weather=true&windspeed_unit=mph&temperature_unit=fahrenheit&hourly=temperature_2m,weathercode,visibility&daily=sunrise,sunset');
+const instateFinalProps = async (lat, lon, tz) => {
+  const worker = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + lon + '&timezone=' + tz + '&current_weather=true&windspeed_unit=mph&temperature_unit=fahrenheit&hourly=temperature_2m,windspeed_10m,winddirection_10m,weathercode,is_day,visibility&daily=sunrise,sunset');
   const data = await worker.json();
 
   return data;
@@ -101,13 +101,66 @@ const parseCurrentProps = (obj) => {
     'svg': dayOrNight(weatherCode.get(obj.current_weather.weathercode).anim, obj.current_weather.is_day),
     'temp': obj.current_weather.temperature,
     'unit': obj.hourly_units.temperature_2m,
-    'time': getTime(obj.current_weather.time),
+    'time': obj.current_weather.time,
     'wind_dir': Math.trunc(obj.current_weather.winddirection),
     'wind_speed': obj.current_weather.windspeed,
     'visibility': Math.round(obj.hourly.visibility[0] / 1609.344),
     'sunrise': new Date(obj.daily.sunrise[0]).toLocaleString([], { hour: 'numeric', minute: 'numeric', hour12: true }),
     'sunset': new Date(obj.daily.sunset[0]).toLocaleString([], { hour: 'numeric', minute: 'numeric', hour12: true })
   };
+}
+
+const parseDailyProps = (obj) => {
+  var times = obj.hourly.time;
+  const subject = obj.current_weather.time;
+  let start = 0;
+
+
+
+  for (var i = 0; i < times.length; i++)
+  {
+    if (times[i] == subject)
+    {
+      start = i + 1;
+      break;
+    }
+  }
+
+  const visibilities = [];
+  const wDir = [];
+  const wSpeed = [];
+  const weatherDescs = [];
+  const weatherCodes = [];
+  const temps = [];
+  const isDay = []
+  times = [];
+
+
+  for (var i = new Number(start); i < (start + 24); i++)
+  {
+    visibilities.push(Math.round(obj.hourly.visibility[i] / 1609.344));
+    wDir.push(Math.trunc(obj.hourly.winddirection_10m[i]));
+    wSpeed.push(Math.trunc(obj.hourly.windspeed_10m[i]));
+    weatherDescs.push(weatherCode.get(obj.hourly.weathercode[i]).desc);
+    weatherCodes.push(dayOrNight(weatherCode.get(obj.hourly.weathercode[i]).anim, obj.hourly.is_day[i]));
+    temps.push(obj.hourly.temperature_2m[i]);
+    isDay.push(obj.hourly.is_day[i]);
+    times.push(obj.hourly.time[i]);
+  }
+
+  return {
+    'lat': obj.latitude,
+    'lon': obj.longitude,
+    'desc': weatherDescs,
+    'svg': weatherCodes,
+    'temp': temps,
+    'unit': obj.hourly_units.temperature_2m,
+    'time': times,
+    'wind_dir': wDir,
+    'wind_speed': wSpeed,
+    'visibility': visibilities,
+    'isDay': isDay
+  }
 }
 
 const dayOrNight = (string, isDay) => {
@@ -117,10 +170,4 @@ const dayOrNight = (string, isDay) => {
   }
 
   return string;
-}
-
-const getTime = (context) => {
-  var date = new Date();
-  date.setUTCHours(date.getUTCHours() + Math.abs((new Date().getUTCHours()) - (new Date(context).getUTCHours())));
-  return date.toLocaleString([], { hour: 'numeric', minute: 'numeric', hour12: true });
 }

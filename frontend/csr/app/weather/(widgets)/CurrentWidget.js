@@ -11,7 +11,7 @@ const font = Dosis({
 export default function CurrentWidget({props}) {
   return (
     <div className={styles.wrapper + ' ' + font.className}>
-      <label className={styles.time}>{props.time}</label>
+      <label className={styles.time}>{getTime(props.time)}</label>
       <div className={styles.temperature}>{props.temp}<label className={styles.temperature_unit}>{props.unit}</label></div>
       <div className={styles.animation_wrapper}><img className={styles.animation} src={'/svg/' + props.svg}></img></div>
       <p className={styles.description}>{props.desc}</p>
@@ -26,4 +26,10 @@ export default function CurrentWidget({props}) {
       <p className={styles.sunset}>{props.sunset}</p>
     </div>
   );
+}
+
+const getTime = (context) => {
+  var date = new Date(context);
+  date.setMinutes(new Date().getMinutes());
+  return date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
 }

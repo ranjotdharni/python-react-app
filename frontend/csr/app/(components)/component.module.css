@@ -581,7 +581,7 @@
     height: 5%;
     padding-inline-start: 2%;
     padding-inline-end: 2%;
-    background-color: rgb(34, 34, 34);/*rgb(82, 35, 59);*/
+    background-color: rgb(34, 34, 34);
     position: absolute;
     display: flex;
     flex-direction: column;

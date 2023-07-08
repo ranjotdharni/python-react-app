@@ -1,3 +1,33 @@
+.content_wrapper::-webkit-scrollbar
+{
+    height: 1vh;
+}
+
+.content_wrapper::-webkit-scrollbar-track
+{
+    margin-block: 0.25vw;
+    padding-left: 1vw;
+    border-radius: 1vw;
+}
+
+.content_wrapper::-webkit-scrollbar-thumb
+{
+    border: 0.2vh solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 100vw;
+}
+
+.content_wrapper:hover::-webkit-scrollbar-track
+{
+    background-color: rgba(8, 8, 8, 0.24);
+}
+
+.content_wrapper:hover::-webkit-scrollbar-thumb
+{
+    background-color: var(--pink-color);
+}
+
 .wrapper
 {
     display: inline-block;
@@ -11,4 +41,50 @@
     background-color: rgba(22, 21, 21, 0.24);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
+}
+
+.header
+{
+    position: absolute;
+    top: -5%;
+    left: 83%;
+    font-size: 1.5vw;
+    color: var(--pink-base);
+    text-shadow: 1px 1px 22px var(--pink-color), -1px -1px 22px var(--pink-color),
+        1px -1px 22px var(--pink-color), -1px 1px 22px var(--pink-color),
+        0px 0px 2px var(--pink-color), 0px 0px 3px var(--pink-color), 0px 0px 4px var(--pink-color);
+}
+
+.info
+{
+    position: absolute;
+    top: 8%;
+    left: 5%;
+    font-size: 0.75vw;
+    color: rgb(167, 160, 151);
+}
+
+.content_wrapper
+{
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 95%;
+    height: 80%;
+    position: absolute;
+    top: 15%;
+    left: 2.5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.content_wrapper:hover
+{
+    cursor: grab;
+}
+
+.content_wrapper:active
+{
+    cursor: grabbing;
 }

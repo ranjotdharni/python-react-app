@@ -1,11 +1,7 @@
 'use client'
 import styles from '../(css)/component.module.css';
-import { Dosis } from '@next/font/google';
 
-const search_box = Dosis({
-    subsets: ['latin'],
-    weight: ['400']
-  });
+const hash = ["NNE","NE","ENE","E","ESE", "SE", "SSE","S","SSW","SW","WSW","W","WNW","NW","NNW", "N"];
 
 export default function Compass({width, height, top, left, rot, wind}) {
 
@@ -26,7 +22,6 @@ export default function Compass({width, height, top, left, rot, wind}) {
 }
 
 const getDirection = (rot) => {
-  const hash = ["NNE","NE","ENE","E","ESE", "SE", "SSE","S","SSW","SW","WSW","W","WNW","NW","NNW", "N"];
 
   if (rot <= 11.25)
   {
