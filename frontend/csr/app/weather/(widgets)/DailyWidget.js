@@ -40,7 +40,7 @@ export default function DailyWidget({props}) {
       if(!isDown) return;
       e.preventDefault();
       const x = e.pageX - slider.offsetLeft;
-      const walk = (x - startX) * 0.95; //scroll-fast
+      const walk = (x - startX) * 0.95;
       slider.scrollLeft = scrollLeft - walk;
     });
   });

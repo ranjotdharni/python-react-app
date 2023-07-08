@@ -49,6 +49,7 @@ const weatherCode = new Map(hashCodes);
 export default async function page({searchParams})
 {
   var id = searchParams.id;
+  var bg_id = searchParams.bg;
   var label;
   var initialProps;
   var finalProps;
@@ -64,7 +65,7 @@ export default async function page({searchParams})
 
   return (
     <>
-      <DynamicWall />
+      <DynamicWall background={parseBackground(bg_id)} />
 
       <div className={styles.page_header_wrapper}><label className={styles.page_header + ' ' + font.className}>{label}</label></div>
       <CurrentWidget props={parseCurrentProps(finalProps)} />
@@ -72,6 +73,16 @@ export default async function page({searchParams})
       <WeeklyWidget props={label} />
     </> 
   );
+}
+
+const parseBackground = (bg) => {
+
+  if (bg && (bg < process.env.NEXT_PUBLIC_MAX_BGS))
+  {
+    return '/mp4/bg_' + bg + '.mp4';
+  }
+
+  return '/mp4/bg_0.mp4';
 }
 
 const instateInitialProps = async (id) => {

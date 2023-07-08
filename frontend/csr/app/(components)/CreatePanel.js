@@ -9,7 +9,7 @@ const neon_sign = Dongle({
   weight: ['300']
 });
 
-export default function CreatePanel({})
+export default function CreatePanel()
 {
     const [trigger, setTrigger] = useState(1);
     const [error, setError] = useState('');
@@ -37,7 +37,7 @@ export default function CreatePanel({})
         }
         else
         {
-            buffer.set(key, {id: key, name: name, country: country, lat: lat, lon: lon});
+            buffer.set(key, {id: key, name: name, country: country, lat: lat, lon: lon, bg: Math.floor((Math.random() * (process.env.NEXT_PUBLIC_MAX_BGS - 1)) + 1)});
         }
         
         if (buffer.size > 0)
@@ -73,13 +73,13 @@ export default function CreatePanel({})
             buffer.forEach((item, key) => {
                 if (flag === null)
                 {
-                    flag = new String(key);
+                    flag = {key: new String(key), bg: item.bg};
                 }
                 temp.push(item);
             });
             localStorage.setItem('forecastHash', JSON.stringify(temp));
         }
-        window.location.href = (new String(window.location.origin)) + '/weather?id=' + flag;
+        window.location.href = (new String(window.location.origin)) + '/weather?id=' + flag.key + '&bg=' + flag.bg;
     }
 
     useEffect(() => {
