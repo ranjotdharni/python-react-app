@@ -77,7 +77,7 @@ export default async function page({searchParams})
 
 const parseBackground = (bg) => {
 
-  if (bg && (bg < Number(process.env.NEXT_PUBLIC_MAX_BGS)))
+  if (bg && (Number(bg) < Number(process.env.NEXT_PUBLIC_MAX_BGS)))
   {
     return '/mp4/bg_' + bg + '.mp4';
   }

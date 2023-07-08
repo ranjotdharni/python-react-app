@@ -10,7 +10,7 @@ export default function DynamicWall({background}) {
    const pathname = usePathname();
    const searchParams = useSearchParams();
    useEffect(() => {
-      if (searchParams.get('bg') && (searchParams.get('bg') < process.env.NEXT_PUBLIC_MAX_BGS))
+      if (searchParams.get('bg') && (Number(searchParams.get('bg')) < Number(process.env.NEXT_PUBLIC_MAX_BGS)))
       {
         setActive('/mp4/bg_' + searchParams.get('bg') + '.mp4');
       }
