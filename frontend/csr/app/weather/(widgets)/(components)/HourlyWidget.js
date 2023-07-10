@@ -2,7 +2,6 @@
 import Compass from './Compass';
 import styles from '../(css)/component.module.css';
 import { Dosis } from '@next/font/google';
-import { useEffect } from 'react';
 
 const font = Dosis({
     subsets: ['latin'],

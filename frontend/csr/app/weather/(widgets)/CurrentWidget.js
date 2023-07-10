@@ -11,6 +11,7 @@ const font = Dosis({
 export default function CurrentWidget({props}) {
   return (
     <div className={styles.wrapper + ' ' + font.className}>
+      <p className={styles.day}>Today</p>
       <label className={styles.time}>{getTime(props.time)}</label>
       <div className={styles.temperature}>{props.temp}<label className={styles.temperature_unit}>{props.unit}</label></div>
       <div className={styles.animation_wrapper}><img className={styles.animation} src={'/svg/' + props.svg}></img></div>

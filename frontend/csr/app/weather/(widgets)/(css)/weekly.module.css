@@ -1,3 +1,33 @@
+.content_wrapper::-webkit-scrollbar
+{
+    height: 1vh;
+}
+
+.content_wrapper::-webkit-scrollbar-track
+{
+    margin-block: 0.25vw;
+    padding-left: 1vw;
+    border-radius: 1vw;
+}
+
+.content_wrapper::-webkit-scrollbar-thumb
+{
+    border: 0.2vh solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 100vw;
+}
+
+.content_wrapper:hover::-webkit-scrollbar-track
+{
+    background-color: rgba(8, 8, 8, 0.24);
+}
+
+.content_wrapper:hover::-webkit-scrollbar-thumb
+{
+    background-color: var(--pink-color);
+}
+
 .wrapper
 {
     display: inline-block;
@@ -8,7 +38,243 @@
     top: 52.5vh;
     border: solid 1px black;
     border-radius: 1vw;
+    background-color: var(--pink-drop);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.header
+{
+    position: absolute;
+    top: -2.5%;
+    left: 87%;
+    font-size: 1.5vw;
+    color: var(--pink-base);
+    text-shadow: 1px 1px 22px var(--pink-color), -1px -1px 22px var(--pink-color),
+        1px -1px 22px var(--pink-color), -1px 1px 22px var(--pink-color),
+        0px 0px 2px var(--pink-color), 0px 0px 3px var(--pink-color), 0px 0px 4px var(--pink-color);
+}
+
+.content_wrapper
+{
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 95%;
+    height: 80%;
+    position: absolute;
+    top: 15%;
+    left: 2.5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.content_wrapper:hover
+{
+    cursor: grab;
+}
+
+.content_wrapper:active
+{
+    cursor: grabbing;
+}
+
+.item_wrapper
+{
+    flex-shrink: 0;
+    width: 17%;
+    height: 95%;
+    margin-left: 1%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: solid 1px black;
+    border-radius: 1vw;
     background-color: rgba(22, 21, 21, 0.24);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
+}
+
+.time_wrapper
+{
+    position: absolute;
+    top: 1%;
+    left: 60%;
+    width: 35%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.time
+{
+    font-size: 1vw;
+    color: var(--pink-base);
+    text-shadow: 1px 1px 22px var(--pink-color), -1px -1px 22px var(--pink-color),
+        1px -1px 22px var(--pink-color), -1px 1px 22px var(--pink-color),
+        0px 0px 2px var(--pink-color), 0px 0px 3px var(--pink-color), 0px 0px 4px var(--pink-color);
+}
+
+.animation_wrapper
+{
+    width: 125%;
+    height: 60%;
+    position: absolute;
+    top: 15%;
+    left: 22%;
+}
+
+.animation
+{
+    width: 100%;
+    height: 100%;
+}
+
+.description
+{
+    font-size: 1vw;
+    position: relative;
+    top: 65%;
+    color: var(--pink-base);
+    text-shadow: 1px 1px 22px var(--pink-color), -1px -1px 22px var(--pink-color),
+        1px -1px 22px var(--pink-color), -1px 1px 22px var(--pink-color),
+        0px 0px 2px var(--pink-color), 0px 0px 3px var(--pink-color), 0px 0px 4px var(--pink-color);
+}
+
+.description_after
+{
+    background-color: rgb(22, 21, 21);
+    position: absolute;
+    top: 79%;
+    left: 10%;
+    width: 80%;
+    height: 0.5%;
+    border-radius: 1vw;
+    visibility: visible;
+}
+
+.temperature
+{
+    background-color: rgb(13, 13, 13);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    height: 20%;
+    position: absolute;
+    top: 2.5%;
+    left: 2.5%;
+    border-radius: 0.5vw;
+    font-size: 1vw;
+    color: var(--pink-base);
+    text-shadow: 1px 1px 22px var(--pink-color), -1px -1px 22px var(--pink-color),
+        1px -1px 22px var(--pink-color), -1px 1px 22px var(--pink-color),
+        0px 0px 2px var(--pink-color), 0px 0px 3px var(--pink-color), 0px 0px 4px var(--pink-color);
+}
+
+.temperature_unit
+{
+    font-size: 0.5vw;
+    color: var(--pink-base);
+    text-shadow: none;
+    position: absolute;
+    top: 5%;
+    left: 75%;
+}
+
+.min_temp
+{
+    font-size: 0.6vw;
+    color: rgb(167, 160, 151);
+    position: absolute;
+    top: 20%;
+    left: 8.5%;
+}
+
+.eyeball
+{
+    position: absolute;
+    top: 85%;
+    left: 49%;
+    width: 5%;
+    height: 5%;
+    padding-inline: 1%;
+    border-radius: 0.25vw;
+    border: solid 1px rgb(184, 165, 165);
+    background-color: rgb(13, 13, 13);
+}
+
+.visibility_wrapper
+{
+    width: 20%;
+    position: absolute;
+    top: 91%;
+    left: 43%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.visibility
+{
+    color: rgb(167, 160, 151);
+    font-size: 0.75vw;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.sunrise
+{
+    font-size: 0.65vw;
+    position: absolute;
+    top: 80%;
+    left: 75%;
+    padding-inline: 1%;
+    border-radius: 0.25vw;
+    border: solid 1px rgb(184, 165, 165);
+    background-color: rgb(13, 13, 13);
+    color: var(--pink-base);
+    text-shadow: 1px 1px 22px var(--pink-color), -1px -1px 22px var(--pink-color),
+        1px -1px 22px var(--pink-color), -1px 1px 22px var(--pink-color),
+        0px 0px 2px var(--pink-color), 0px 0px 3px var(--pink-color), 0px 0px 4px var(--pink-color);
+}
+
+.sunset
+{
+    font-size: 0.65vw;
+    position: absolute;
+    top: 86.5%;
+    left: 75%;
+    padding-inline: 1%;
+    border-radius: 0.25vw;
+    border: solid 1px rgb(184, 165, 165);
+    background-color: rgb(13, 13, 13);
+    color: var(--pink-base);
+    text-shadow: 1px 1px 22px var(--pink-color), -1px -1px 22px var(--pink-color),
+        1px -1px 22px var(--pink-color), -1px 1px 22px var(--pink-color),
+        0px 0px 2px var(--pink-color), 0px 0px 3px var(--pink-color), 0px 0px 4px var(--pink-color);
+}
+
+.sunrise::before
+{
+    content: 'Sunrise: ';
+    color: rgb(167, 160, 151);
+    text-shadow: none;
+    position: absolute;
+    top: -5%;
+    left: -2.25vw;
+}
+
+.sunset::after
+{
+    content: 'Sunset: ';
+    color: rgb(167, 160, 151);
+    text-shadow: none;
+    position: absolute;
+    top: -5%;
+    left: -2.25vw;
 }

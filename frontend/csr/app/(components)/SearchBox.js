@@ -16,6 +16,14 @@ export default function SearchBox({errorMessage, siblingToSibling})
     const [response, setResponse] = useState([]);
     const [data, setData] = useState([]);
 
+    const handleEnter = async (e) => 
+    {
+        if (e.key == 'Enter')
+        {
+            await search(e.target.value);
+        }
+    }
+
     const search = async (onChange) => 
     {
         if (input.trim() == '')
@@ -59,7 +67,7 @@ export default function SearchBox({errorMessage, siblingToSibling})
     return (
         <main className={search_box.className}>
             <div className={styles.search_div}>
-                <input className={styles.search_input} value={input} placeholder='Search City...'
+                <input className={styles.search_input} value={input} placeholder='Search City...' onKeyDown={handleEnter}
                     onChange={evt => {setInput(evt.target.value); search(true)}}></input><button className={styles.search_button} onClick={() => {search(false)}}></button>
                 <div className={styles.search_list}>
                 <div className={styles.search_list_header}><label>Select all that apply</label></div>

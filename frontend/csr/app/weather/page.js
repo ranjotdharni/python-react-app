@@ -70,7 +70,7 @@ export default async function page({searchParams})
       <div className={styles.page_header_wrapper}><label className={styles.page_header + ' ' + font.className}>{label}</label></div>
       <CurrentWidget props={parseCurrentProps(finalProps)} />
       <DailyWidget props={parseDailyProps(finalProps)} />
-      <WeeklyWidget props={label} />
+      <WeeklyWidget props={parseWeeklyProps(finalProps)} />
     </> 
   );
 }
@@ -98,7 +98,16 @@ const instateInitialProps = async (id) => {
 }
 
 const instateFinalProps = async (lat, lon, tz) => {
-  const worker = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + lon + '&timezone=' + tz + '&current_weather=true&windspeed_unit=mph&temperature_unit=fahrenheit&hourly=temperature_2m,windspeed_10m,winddirection_10m,weathercode,is_day,visibility&daily=sunrise,sunset');
+  const worker = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' 
+                              + lat + '&longitude=' 
+                              + lon + '&timezone=' 
+                              + tz + '&current_weather=true&windspeed_unit=mph&temperature_unit=fahrenheit'
+                              + '&hourly=temperature_2m,windspeed_10m,winddirection_10m,weathercode,is_day,visibility'
+                              + '&daily=sunrise,sunset,temperature_2m_max,temperature_2m_min,weathercode,windspeed_10m_max,winddirection_10m_dominant&forecast_days=11',
+                          {
+                            cache: 'no-store'
+                          });
+
   const data = await worker.json();
 
   return data;
@@ -110,7 +119,7 @@ const parseCurrentProps = (obj) => {
     'lon': obj.longitude,
     'desc': weatherCode.get(obj.current_weather.weathercode).desc,
     'svg': dayOrNight(weatherCode.get(obj.current_weather.weathercode).anim, obj.current_weather.is_day),
-    'temp': obj.current_weather.temperature,
+    'temp': Math.trunc(obj.current_weather.temperature),
     'unit': obj.hourly_units.temperature_2m,
     'time': obj.current_weather.time,
     'wind_dir': Math.trunc(obj.current_weather.winddirection),
@@ -154,7 +163,7 @@ const parseDailyProps = (obj) => {
     wSpeed.push(Math.trunc(obj.hourly.windspeed_10m[i]));
     weatherDescs.push(weatherCode.get(obj.hourly.weathercode[i]).desc);
     weatherCodes.push(dayOrNight(weatherCode.get(obj.hourly.weathercode[i]).anim, obj.hourly.is_day[i]));
-    temps.push(obj.hourly.temperature_2m[i]);
+    temps.push(Math.trunc(obj.hourly.temperature_2m[i]));
     isDay.push(obj.hourly.is_day[i]);
     times.push(obj.hourly.time[i]);
   }
@@ -171,6 +180,43 @@ const parseDailyProps = (obj) => {
     'wind_speed': wSpeed,
     'visibility': visibilities,
     'isDay': isDay
+  }
+}
+
+const parseWeeklyProps = (obj) => {
+  const sun = [];
+  const wDir = [];
+  const wSpeed = [];
+  const weatherDescs = [];
+  const weatherCodes = [];
+  const temps = [];
+  const times = [];
+
+
+  for (var i = new Number(1); i < 11; i++)
+  {
+    sun.push({'sunrise': new Date(obj.daily.sunrise[i]).toLocaleString([], { hour: 'numeric', minute: 'numeric', hour12: true }),
+              'sunset': new Date(obj.daily.sunset[i]).toLocaleString([], { hour: 'numeric', minute: 'numeric', hour12: true })
+            });
+    wDir.push(Math.trunc(obj.daily.winddirection_10m_dominant[i]));
+    wSpeed.push(Math.trunc(obj.daily.windspeed_10m_max[i]));
+    weatherDescs.push(weatherCode.get(obj.daily.weathercode[i]).desc);
+    weatherCodes.push(weatherCode.get(obj.daily.weathercode[i]).anim);
+    temps.push({'max': Math.trunc(obj.daily.temperature_2m_max[i]), 'min': Math.trunc(obj.daily.temperature_2m_min[i])});
+    times.push(obj.daily.time[i]);
+  }
+
+  return {
+    'lat': obj.latitude,
+    'lon': obj.longitude,
+    'desc': weatherDescs,
+    'svg': weatherCodes,
+    'temp': temps,
+    'unit': obj.daily_units.temperature_2m_max,
+    'time': times,
+    'wind_dir': wDir,
+    'wind_speed': wSpeed,
+    'daylight': sun
   }
 }
 
