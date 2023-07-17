@@ -1,8 +1,14 @@
 'use client'
 import { Dongle } from '@next/font/google';
+import { Dosis } from '@next/font/google';
 import styles from './component.module.css';
 import SearchBox from './SearchBox';
 import { useState, useEffect } from 'react';
+
+const font = Dosis({
+    subsets: ['latin'],
+    weight: ['400']
+});
 
 const neon_sign = Dongle({
   subsets: ['latin'],
@@ -37,7 +43,7 @@ export default function CreatePanel()
         }
         else
         {
-            buffer.set(key, {id: key, name: name, country: country, lat: lat, lon: lon, bg: Math.floor((Math.random() * (process.env.NEXT_PUBLIC_MAX_BGS - 1)) + 1)});
+            buffer.set(key, {id: key, name: name, country: country, lat: lat, lon: lon});
         }
         
         if (buffer.size > 0)
@@ -47,6 +53,18 @@ export default function CreatePanel()
         else
         {
             setReadyState(false);
+        }
+    }
+
+    const locationForecast = () => {
+        if (navigator.geolocation)
+        {
+            let coordSearch = new Event('geolocate', {detail: 'Using Current Location'});
+            window.dispatchEvent(coordSearch);
+        }
+        else
+        {
+            childToParent('Location not supported and/or accessible.');
         }
     }
 
@@ -73,13 +91,13 @@ export default function CreatePanel()
             buffer.forEach((item, key) => {
                 if (flag === null)
                 {
-                    flag = {key: new String(key), bg: item.bg};
+                    flag = new String(key);
                 }
                 temp.push(item);
             });
             localStorage.setItem('forecastHash', JSON.stringify(temp));
         }
-        window.location.href = (new String(window.location.origin)) + '/weather?id=' + flag.key + '&bg=' + flag.bg;
+        window.location.href = (new String(window.location.origin)) + '/weather?id=' + flag;
     }
 
     useEffect(() => {
@@ -89,15 +107,33 @@ export default function CreatePanel()
     }, [trigger]);
 
     return (
-        <div className={styles.create_panel}>
+        <div className={styles.create_panel + " " + font.className}>
+            <div className={styles.logo_box}><img className={styles.logo} src='/img/logo.png'></img><label className={styles.logo_label}>Meteorize</label></div>
             <span className={styles.create_header_border}></span>
-            <main className={neon_sign.className}>
+            <main className={font.className}>
                 <h1 className={styles.create_header}>Add New Forecast</h1>
             </main>
 
+            <p className={styles.description_title + " " + styles.title1}>Search for a Place</p>
+            <p className={styles.description_text + " " + styles.text1}>
+                Use the search bar to the right to search for a city or a location. Your search must be 
+                a minimum of two characters to return a proper set of results. From the results, select 
+                all locations for which you wish to view the forecast and current weather conditions, then click 
+                the Add button in the bottom right of the page.   
+            </p>
+
+            <p className={styles.description_title + " " + styles.title2}>Navigate Between Forecasts</p>
+            <p className={styles.description_text + " " + styles.text2}>
+                Click the sandwich in the top left of the page to open the navigation bar. Use it to navigate 
+                between all of the forecasts that you've selected and added. You're selections will persist even 
+                if you close and re-open your browser.If you wish to remove a forecast, find it in the 
+                navigation bar and click on the cross next to its name.    
+            </p>
+
             <SearchBox errorMessage={childToParent} siblingToSibling={addBufferItem}/>
-            <label className={styles.error} style={{opacity: errorFlag ? "1" : "0"}}>{error}</label>
-            <button onClick={makeForecast} className={neon_sign.className + " " + styles.submit_button + " " + (readyState ? styles.ready : styles.not_ready)}>Add</button>
+            <div className={styles.error_wrapper}><label className={styles.error} style={{opacity: errorFlag ? "1" : "0"}}>{error}</label></div>
+            <button onClick={locationForecast} className={neon_sign.className + " " + styles.basic_button + " " + styles.location_button + " " + styles.ready}>Use My Location</button>
+            <button onClick={makeForecast} className={neon_sign.className + " " + styles.basic_button + " " + styles.submit_button + " " + (readyState ? styles.ready : styles.not_ready)}>Add</button>
         </div>
     );
 }

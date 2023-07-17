@@ -3,6 +3,7 @@ import NavBar from './(components)/NavBar';
 import styles from './(components)/component.module.css';
 import './globals.css';
 import { Dosis } from '@next/font/google';
+import DynamicWall from './(components)/DynamicWall';
 
 const page_font = Dosis({
     subsets: ['latin'],
@@ -14,6 +15,7 @@ export default async function RootLayout({ children }) {
     <html className={page_font}>
       <body>
         <NavBar />
+        <DynamicWall />
         {children}
       </body>
     </html>

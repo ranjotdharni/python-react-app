@@ -8,7 +8,7 @@
       <feComponentTransfer result="offsetblur" in="offset-0">
         <feFuncA id="spread-ctrl" type="linear" slope="0.5"/>
       </feComponentTransfer>
-      <feFlood flood-color="rgba(236,19,109,1)" result="flood-0"/>
+      <feFlood flood-color="#FF3403" result="flood-0"/>
       <feComposite in2="offsetblur" operator="in" result="composite-0" in="flood-0"/>
       <feMerge result="merge-0">
         <feMergeNode in="composite-0"/>
@@ -22,7 +22,7 @@
       <feComponentTransfer result="offsetblur">
         <feFuncA id="spread-ctrl" type="linear" slope="0.5"/>
       </feComponentTransfer>
-      <feFlood flood-color="rgba(236,19,109,1)"/>
+      <feFlood flood-color="#FF3403"/>
       <feComposite in2="offsetblur" operator="in"/>
       <feMerge>
         <feMergeNode/>
@@ -36,7 +36,7 @@
       <feComponentTransfer result="offsetblur">
         <feFuncA id="spread-ctrl" type="linear" slope="0.5"/>
       </feComponentTransfer>
-      <feFlood flood-color="rgba(236,19,109,1)"/>
+      <feFlood flood-color="#FF3403"/>
       <feComposite in2="offsetblur" operator="in"/>
       <feMerge>
         <feMergeNode/>
@@ -50,7 +50,7 @@
       <feComponentTransfer result="offsetblur">
         <feFuncA id="spread-ctrl" type="linear" slope="0.5"/>
       </feComponentTransfer>
-      <feFlood flood-color="rgba(236,19,109,1)"/>
+      <feFlood flood-color="#FF3403"/>
       <feComposite in2="offsetblur" operator="in"/>
       <feMerge>
         <feMergeNode/>

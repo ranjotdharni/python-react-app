@@ -1,8 +1,13 @@
 :root
 {
+    --pink-background: #ad2c62;
+    --pink-base: #FFDFBE;
+    --pink-color: #FF3403;
+    /*
     --pink-base: #f0c5d7;
     --pink-color: #ec136d;
-    --pink-drop: #760936;
+    */
+    --pink-drop: #0F0F0F;
 }
 
 body
