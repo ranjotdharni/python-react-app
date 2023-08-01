@@ -126,7 +126,7 @@ export default function CreatePanel()
             <p className={styles.description_text + " " + styles.text2}>
                 Click the sandwich in the top left of the page to open the navigation bar. Use it to navigate 
                 between all of the forecasts that you've selected and added. You're selections will persist even 
-                if you close and re-open your browser.If you wish to remove a forecast, find it in the 
+                if you close and re-open your browser. If you wish to remove a forecast, find it in the 
                 navigation bar and click on the cross next to its name.    
             </p>
 
