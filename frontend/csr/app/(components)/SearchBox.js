@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import SearchItem from './SearchItem';
 import styles from './component.module.css';
 import { Dosis } from '@next/font/google';
+import { NextRequest } from 'next/server';
 
 const search_box = Dosis({
     subsets: ['latin'],
@@ -98,9 +99,14 @@ export default function SearchBox({errorMessage, siblingToSibling})
         let lat = pos.coords.latitude;
         let lon = pos.coords.longitude;
 
-        fetch('https://geocode.maps.co/reverse?lat=' + lat + '&lon=' + lon).then(async middle => {
+        fetch('https://geocode.maps.co/reverse?lat=' + lat + '&lon=' + lon + '&api_key=658e9491baa2a619039261xwe17f209').then(async middle => {
             return await middle.json();
         }).then(async obj => {
+            if (obj.address.city === undefined) {
+                errorMessage("Can't Find Your Location.")
+                return
+            }
+
             const final = obj.address.city + ', ' + formatGeolocation(obj.address.country);
             setInput(final);
             await search(final);
